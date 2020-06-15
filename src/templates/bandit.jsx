@@ -93,6 +93,7 @@ const Content = styled.main`
 
 const CaseTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
   const { data } = caseNode;
+
   return (
     <Layout>
       <Helmet title={`${data.title.text} | ${config.siteTitle}`} />
@@ -105,7 +106,6 @@ const CaseTemplate = ({ data: { prismicCaseStudy: caseNode } }) => {
       </Hero>
       <Wrapper py={4} px={4} mx="auto">
         <SubTitle>{data.subtitle.text}</SubTitle>
-        <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
       </Wrapper>
       <Footer isCase />
     </Layout>
@@ -121,9 +121,8 @@ CaseTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query CaseBySlug($uid: String!) {
-    prismicCaseStudy(uid: { eq: $uid }) {
-      uid
+  query BanditBySlug($uid: String!) {
+    prismicBandits(uid: { eq: $uid }) {
       first_publication_date
       last_publication_date
       data {
@@ -145,10 +144,8 @@ export const pageQuery = graphql`
         subtitle {
           text
         }
-        content {
-          html
-        }
       }
     }
   }
 `;
+

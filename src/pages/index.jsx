@@ -140,7 +140,7 @@ const Contact = styled(Wrapper)`
 
 const IndexPage = ({
   data: {
-    caseStudies: { edges },
+      caseStudies: { edges },
   },
 }) => (
   <Layout>
@@ -243,35 +243,37 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    caseStudies: allPrismicCaseStudy(sort: { fields: [last_publication_date], order: DESC }) {
+    caseStudies: allPrismicBandits(sort: { fields: [last_publication_date], order: DESC }) {
       edges {
         node {
           uid
-          data {
-            header_image {
-              localFile {
-                childImageSharp {
-                  fluid(
-                    maxWidth: 900
-                    maxHeight: 900
-                    quality: 90
-                    traceSVG: { color: "#021212" }
-                    cropFocus: ENTROPY
-                  ) {
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                  }
-                }
-              }
-            }
-            title {
-              text
-            }
-            subtitle {
-              text
-            }
-          }
         }
       }
     }
   }
 `;
+
+          // data {
+          //   header_image {
+          //     localFile {
+          //       childImageSharp {
+          //         fluid(
+          //           maxWidth: 900
+          //           maxHeight: 900
+          //           quality: 90
+          //           traceSVG: { color: "#021212" }
+          //           cropFocus: ENTROPY
+          //         ) {
+          //           ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          //         }
+          //       }
+          //     }
+          //   }
+          //   title {
+          //     text
+          //   }
+          //   subtitle {
+          //     text
+          //   }
+          // }
+          //

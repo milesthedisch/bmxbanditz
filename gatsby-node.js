@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pages = await graphql(`
     {
-      allPrismicCaseStudy {
+      allPrismicBandits {
         edges {
           node {
             id
@@ -16,12 +16,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const caseTemplate = path.resolve('src/templates/case.jsx');
+  const banditTemplate = path.resolve('src/templates/bandit.jsx');
 
-  pages.data.allPrismicCaseStudy.edges.forEach(edge => {
+  pages.data.allPrismicBandits.edges.forEach(edge => {
     createPage({
       path: `/${edge.node.uid}`,
-      component: caseTemplate,
+      component: banditTemplate,
       context: {
         uid: edge.node.uid,
       },
