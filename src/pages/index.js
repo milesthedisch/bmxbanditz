@@ -6,7 +6,7 @@ export default function Home() {
         return (
             <div>
                 <Link to="/contact">Contact</Link>
-                <Header headerText="Maya is awesome"/>
+                <Header headerText="Maya is awesome!"/>
             </div>
         )
 }
